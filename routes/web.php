@@ -45,7 +45,7 @@ Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/edit/{id}', 'SupplierEdit')->name('supplier.edit');
     Route::post('/supplier/update', 'SupplierUpdate')->name('supplier.update');
 
-    Route::get('/supplier/delete{id}', 'SupplierDelete')->name('supplier.delete');
+    Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
 
 
 
@@ -100,6 +100,9 @@ Route::controller(ProductController::class)->group(function () {
 Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase/all', 'PurchaseAll')->name('purchase.all');
     Route::get('/purchase/add', 'PurchaseAdd')->name('purchase.add');
+    Route::post('/purchase/store', 'PurchaseStore')->name('purchase.store');
+    Route::get('/purchase/delete/{id}', 'PurchaseDelete')->name('purchase.delete');
+    Route::get('/purchase/pending', 'PurchasePending')->name('purchase.pending');
 
 
 });
