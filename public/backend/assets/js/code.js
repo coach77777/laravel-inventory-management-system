@@ -1,4 +1,9 @@
 $(function(){
+    // Ensure SweetAlert2 is loaded
+    if (typeof Swal === 'undefined') {
+        console.error('SweetAlert2 is not loaded. Please include the SweetAlert2 library.');
+        return;
+    }
     $(document).on('click','#delete',function(e){
         e.preventDefault();
         var link = $(this).attr("href");

@@ -9,7 +9,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0">Purchase All</h4>
+                                    <h4 class="mb-sm-0">Purchase All Pending Data</h4>
 
 
 
@@ -32,7 +32,7 @@
                         <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Purhase No</th>
+                            <th>Purchase No</th>
                             <th>Date </th>
                             <th>Supplier</th>
                             <th>Category</th>
@@ -66,7 +66,7 @@
 
                 <td>
 @if($item->status == '0')
-<a href=" " class="btn btn-danger sm" title="Approved" id="ApproveBtn">  <i class="fas fa-check-circle"></i> </a>
+<a href="{{ route('purchase.approve', $item-> id)}} " class="btn btn-danger sm" title="Approved" id="ApproveBtn">  <i class="fas fa-check-circle"></i> </a>
 @endif
                 </td>
 
