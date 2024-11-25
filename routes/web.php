@@ -11,7 +11,6 @@ use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\PurchaseController;
 use App\Http\Controllers\Pos\DefaultController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,43 +35,40 @@ Route::controller(AdminController::class)->group(function () {
 });
 
 
- // Suppliers All Route
+ // Supplier All Route
 Route::controller(SupplierController::class)->group(function () {
     Route::get('/supplier/all', 'SupplierAll')->name('supplier.all');
     Route::get('/supplier/add', 'SupplierAdd')->name('supplier.add');
     Route::post('/supplier/store', 'SupplierStore')->name('supplier.store');
-
     Route::get('/supplier/edit/{id}', 'SupplierEdit')->name('supplier.edit');
     Route::post('/supplier/update', 'SupplierUpdate')->name('supplier.update');
-
     Route::get('/supplier/delete/{id}', 'SupplierDelete')->name('supplier.delete');
-
-
-
 });
 
 
-
- // Customers All Route
- Route::controller(CustomerController::class)->group(function () {
+// Customer All Route
+Route::controller(CustomerController::class)->group(function () {
     Route::get('/customer/all', 'CustomerAll')->name('customer.all');
     Route::get('/customer/add', 'CustomerAdd')->name('customer.add');
     Route::post('/customer/store', 'CustomerStore')->name('customer.store');
-    Route::get('/customer/edit{id}', 'CustomerEdit')->name('customer.edit');
+    Route::get('/customer/edit/{id}', 'CustomerEdit')->name('customer.edit');
     Route::post('/customer/update', 'CustomerUpdate')->name('customer.update');
-    Route::get('/customer/delete{id}', 'CustomerDelete')->name('customer.delete');
+    Route::get('/customer/delete/{id}', 'CustomerDelete')->name('customer.delete');
+
 });
 
 
- // Units All Route
- Route::controller(UnitController::class)->group(function () {
+// Unit All Route
+Route::controller(UnitController::class)->group(function () {
     Route::get('/unit/all', 'UnitAll')->name('unit.all');
     Route::get('/unit/add', 'UnitAdd')->name('unit.add');
     Route::post('/unit/store', 'UnitStore')->name('unit.store');
     Route::get('/unit/edit/{id}', 'UnitEdit')->name('unit.edit');
     Route::post('/unit/update', 'UnitUpdate')->name('unit.update');
     Route::get('/unit/delete/{id}', 'UnitDelete')->name('unit.delete');
+
 });
+
 
 // Category All Route
 Route::controller(CategoryController::class)->group(function () {
@@ -85,6 +81,7 @@ Route::controller(CategoryController::class)->group(function () {
 
 });
 
+
 // Product All Route
 Route::controller(ProductController::class)->group(function () {
     Route::get('/product/all', 'ProductAll')->name('product.all');
@@ -96,6 +93,8 @@ Route::controller(ProductController::class)->group(function () {
 
 });
 
+
+
 // Purchase All Route
 Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase/all', 'PurchaseAll')->name('purchase.all');
@@ -105,16 +104,18 @@ Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase/pending', 'PurchasePending')->name('purchase.pending');
     Route::get('/purchase/approve/{id}', 'PurchaseApprove')->name('purchase.approve');
 
-
 });
+
+
 
 // Default All Route
 Route::controller(DefaultController::class)->group(function () {
     Route::get('/get-category', 'GetCategory')->name('get-category');
-
     Route::get('/get-product', 'GetProduct')->name('get-product');
 
 });
+
+
 
 
 
