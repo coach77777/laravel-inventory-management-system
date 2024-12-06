@@ -32,7 +32,7 @@
                         <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Purhase No</th>
+                            <th>Purchase No</th>
                             <th>Date </th>
                             <th>Supplier</th>
                             <th>Category</th>
