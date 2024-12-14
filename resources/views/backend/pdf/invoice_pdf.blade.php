@@ -152,46 +152,52 @@
         $total_sum += $details->selling_price;
         @endphp
         @endforeach
-                            <tr>
-                                <td class="thick-line"></td>
-                                <td class="thick-line"></td>
-                                <td class="thick-line"></td>
-                                <td class="thick-line"></td>
-                                <td class="thick-line"></td>
-                                <td class="thick-line text-center">
-                                    <strong>Subtotal</strong></td>
-                                    <td class="thick-line text-end">${{ $total_sum }}</td>
-                            </tr>
-                            <tr>
-                                <td class="no-line"></td>
-                                 <td class="no-line"></td>
-                                  <td class="no-line"></td>
-                                   <td class="no-line"></td>
-                                <td class="no-line"></td>
-                                <td class="no-line text-center">
-                                    <strong>Discount Amount</strong></td>
-                                    <td class="no-line text-end">${{ $payment->discount_amount }}</td>
-                            </tr>
-                            <tr>
-                                <td class="no-line"></td>
-                                 <td class="no-line"></td>
-                                  <td class="no-line"></td>
-                                   <td class="no-line"></td>
-                                <td class="no-line"></td>
-                                <td class="no-line text-center">
-                                    <strong>Paid Amount</strong></td>
-                <td class="no-line text-end">${{ $payment->paid_amount }}</td>
-                            </tr>
-                            <tr>
-                                <td class="no-line"></td>
-                                 <td class="no-line"></td>
-                                  <td class="no-line"></td>
-                                   <td class="no-line"></td>
-                                <td class="no-line"></td>
-                                <td class="no-line text-center">
-                                    <strong>Total Amount</strong></td>
-                                <td class="no-line text-end"><h4 class="m-0">${{ $payment->total_amount }}</h4></td>
-                            </tr>
+        <tr>
+            <td class="thick-line"></td>
+            <td class="thick-line"></td>
+            <td class="thick-line"></td>
+            <td class="thick-line"></td>
+            <td class="thick-line"></td>
+            <td class="thick-line text-center">
+                <strong>Subtotal</strong>
+            </td>
+            <td class="thick-line text-end" data-amount="{{ $total_sum }}"></td>
+        </tr>
+        <tr>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line text-center">
+                <strong>Discount Amount</strong>
+            </td>
+            <td class="no-line text-end" data-amount="{{ $payment->discount_amount }}"></td>
+        </tr>
+        <tr>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line text-center">
+                <strong>Paid Amount</strong>
+            </td>
+            <td class="no-line text-end" data-amount="{{ $payment->paid_amount }}"></td>
+        </tr>
+        <tr>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line"></td>
+            <td class="no-line text-center">
+                <strong>Total Amount</strong>
+            </td>
+            <td class="no-line text-end">
+                <h4 class="m-0" data-amount="{{ $payment->total_amount }}"></h4>
+            </td>
+        </tr>
                             </tbody>
                         </table>
                     </div>
@@ -210,19 +216,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 </div>
                             </div> <!-- end col -->
@@ -233,3 +226,18 @@
 
 
 @endsection
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-amount]').forEach(el => {
+            const amount = parseFloat(el.dataset.amount);
+            if (!isNaN(amount)) {
+                el.innerText = new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                }).format(amount);
+            }
+        });
+    });
+    </script>

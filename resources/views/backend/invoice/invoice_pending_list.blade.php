@@ -52,7 +52,7 @@
 
                                             <td> {{ $item->description }} </td>
 
-                                            <td> $ {{ $item['payment']['total_amount'] }} </td>
+                                            <td> $ {{ number_format($item['payment']['total_amount']) }} </td>
 
                                             <td>
                                                 @if ($item->status == '0')

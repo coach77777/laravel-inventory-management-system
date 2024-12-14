@@ -53,7 +53,7 @@
 
                  <td>  {{ $item->description }} </td>
 
-                <td>  $ {{ $item['payment']['total_amount'] }} </td>
+                <td>  $ {{number_format( $item['payment']['total_amount'],2) }} </td>
 
                 <td>
      <a href="{{ route('print.invoice',$item->id) }}" class="btn btn-success" title="Print Invoice" >  <i class="fa fa-print"></i> </a>
