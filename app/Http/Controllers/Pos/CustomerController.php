@@ -8,6 +8,7 @@ use App\Models\Customer;
 use Auth;
 use Illuminate\Support\Carbon;
 use Image;
+use App\Models\Payment;
 
 
 
@@ -130,6 +131,21 @@ class CustomerController extends Controller
     return redirect()->back()->with($notification);
 
  } // End Method
+
+ public function CreditCustomer(){
+
+    $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+    return view('backend.customer.customer_credit',compact('allData'));
+
+} // End Method
+
+
+public function CreditCustomerPrintPdf(){
+
+    $allData = Payment::whereIn('paid_status',['full_due','partial_paid'])->get();
+    return view('backend.pdf.customer_credit_pdf',compact('allData'));
+
+}// End Method
 
 
 } // End Class
