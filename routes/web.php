@@ -24,6 +24,9 @@ Route::controller(DemoController::class)->group(function () {
 });
 
 
+Route::middleware('auth')->group(function(){
+
+
  // Admin All Route
 Route::controller(AdminController::class)->group(function () {
     Route::get('/admin/logout', 'destroy')->name('admin.logout');
@@ -105,18 +108,11 @@ Route::controller(PurchaseController::class)->group(function () {
     Route::get('/purchase/delete/{id}', 'PurchaseDelete')->name('purchase.delete');
     Route::get('/purchase/pending', 'PurchasePending')->name('purchase.pending');
     Route::get('/purchase/approve/{id}', 'PurchaseApprove')->name('purchase.approve');
+    Route::get('/daily/purchase/report', 'DailyPurchaseReport')->name('daily.purchase.report');
+    Route::get('/daily/purchase/pdf', 'DailyPurchasePdf')->name('daily.purchase.pdf');
 
 });
 
-
-
-// Default All Route
-Route::controller(DefaultController::class)->group(function () {
-    Route::get('/get-category', 'GetCategory')->name('get-category');
-    Route::get('/get-product', 'GetProduct')->name('get-product');
-    Route::get('/check-product', 'GetStock')->name('check-product-stock');
-
-});
 
 // Invoice All Route
 Route::controller(InvoiceController::class)->group(function () {
@@ -148,6 +144,18 @@ Route::controller(StockController::class)->group(function () {
     Route::get('/product/wise/pdf', 'ProductWisePdf')->name('product.wise.pdf');
 
 });
+
+}); // End Group Middleware
+
+// Default All Route
+Route::controller(DefaultController::class)->group(function () {
+    Route::get('/get-category', 'GetCategory')->name('get-category');
+    Route::get('/get-product', 'GetProduct')->name('get-product');
+    Route::get('/check-product', 'GetStock')->name('check-product-stock');
+
+});
+
+
 
 
 
